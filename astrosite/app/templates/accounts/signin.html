@@ -1,0 +1,48 @@
+<DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tristan: Beyond the Stars</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <!-- Sign Up and Sign In custom stylesheet-->
+    <link rel="stylesheet" type="text/css" href="..\static\styles\stylesign.css"></link>
+</head>
+<body>
+    <div class="registration-form">
+            <form method="POST" action="">
+            <div id="background"></div>
+            {% csrf_token %}
+                <div class="form-icon">
+                    <span><i class="icon icon-user"></i></span>
+                </div>
+                <div class="form-group">
+                    <input type="text" name="username" placeholder="Username" class="form-control item">
+                </div>
+                <div class="form-group">
+                    <input type="password" name="password" placeholder="Password" class="form-control item">
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-block create-account">Sign In</button>
+                </div>
+            </form>
+        <div class="social-media">
+            <h5>Sign in with social media</h5>
+            <div class="social-icons">
+                <a href="#"><i class="icon-social-facebook" title="Facebook"></i></a>
+                <a href="#"><i class="icon-social-google" title="Google"></i></a>
+                <a href="#"><i class="icon-social-twitter" title="Twitter"></i></a>
+            </div>
+        </div>
+        {% for message in messages %}
+			<p id="messages">{{message}}</p>
+		{% endfor %}	
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="..\static\scripts\particles.min.js"></script>
+    <script type="text/javascript" src="..\static\scripts\custom.js"></script>
+</body>
+</html>
