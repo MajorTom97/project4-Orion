@@ -13,6 +13,7 @@
     <link rel="stylesheet" type="text/css" href="..\static\styles\styles.css"></link>
 </head>
 <body>
+<header>
 <div class="topnav-wrapper" >
     <div class="container">
         <div class="row">
@@ -21,12 +22,13 @@
                     <li><span class="js-toolbar-location"></span><button id="updateLocation">Update Location</button></li>
                     <li><img src="https://skyandtelescope.org/wp-content/themes/sky-and-telescope-2020/src/img/icon-sunset.svg" alt="Sunset Icon"/> SUNSET: <span class="js-tooltop-sunset"></span></li>
                     <li> <img data-theme-link="https://skyandtelescope.org/wp-content/themes/sky-and-telescope-2020" src="https://skyandtelescope.org/wp-content/themes/sky-and-telescope-2020/src/img/icon-moon-waninggibbous.svg" alt="Full Moon Icon" class="moon-type"/> <span class="js-tooltop-moon">MOON: 90% Waxing Gibbous</span></li>
-                    <a target="" href="/interactive-sky-chart" class="btn btn3 star-chart-link" data-ga='{"event" : "skyChartCtaClick", "sky_chart_action" : "Click to Header CTA", "sky_chart_label" : "/interactive-sky-chart"}' >Interactive star Chart</a>
+                    <a target="" href="" class="btn btn3 star-chart-link" >Star Map</a>
                 </ul>
             </div>
         </div>
     </div>
 </div>
+</header>
 <nav class="navbar navbar-expand-lg navbar-dark bg-info">
     <a class="navbar-brand" href="https://freeicons.io"><strong>Orion</strong>
         <img src="..\static\styles\img\capsule.jpg" width="70" height="40">
@@ -58,25 +60,29 @@
     </div>
   </nav>
   <div class="container-fluid">
-  <nav class="subnavbar navbar-inverse">
+  <nav class="subnavbar subnavbar-inverse">
     <div class="container-fluid">
+      <div class="col-md-12">
       <ul class="subnav navbar-nav">
         <li><a id="len1" class="hoverable" href="#">Home</a></li>
         <li><a id="len2" class="hoverable" href="#">Events</a></li>
         <li><a id="len3" class="hoverable" href="#">Softwares</a></li>
         <li><a id="len4" class="hoverable" href="#">Contact</a></li>
       </ul>
+    </div>
+    </div>
     </nav>
   </div>
   <div id="what-the-hell-is-this">
     <div class="page-title">
       <h2>Tristan & Orion</h2>
       <p class="lead">
-         Hello and Welcome to this amazing Website!!
+         Hello and Welcome to this amazing Journey!!!
       </p>
     </div>
   </div>
 </div>
+
 
 <script>
 $(function(){
