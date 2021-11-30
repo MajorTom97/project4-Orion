@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Rampart+One&family=Road+Rage&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/0763869b33.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <!-- Sign Up and Sign In custom stylesheet-->
     <link rel="stylesheet" type="text/css" href="..\static\styles\styles.css"></link>
 </head>
@@ -57,48 +58,67 @@
             </div>
         </div>
         </div>
-    </div>
   </nav>
   <div class="container-fluid">
-  <nav class="subnavbar subnavbar-inverse">
-    <div class="container-fluid">
-      <div class="col-md-12">
-      <ul class="subnav navbar-nav">
-        <li><a id="len1" class="hoverable" href="#">Home</a></li>
-        <li><a id="len2" class="hoverable" href="#">Events</a></li>
-        <li><a id="len3" class="hoverable" href="#">Softwares</a></li>
-        <li><a id="len4" class="hoverable" href="#">Contact</a></li>
-      </ul>
+    <nav class="subnavbar subnavbar-inverse">
+      <div class="container-fluid">
+        <div class="col-md-12">
+        <ul class="subnav navbar-nav">
+          <li><a id="len1" class="hoverable" href="#">Home</a></li>
+          <li><a id="len2" class="hoverable" href="#">Events</a></li>
+          <li><a id="len3" class="hoverable" href="#">Softwares</a></li>
+          <li><a id="len4" class="hoverable" href="#">Contact</a></li>
+        </ul>
+      </div>
+      </div>
+      </nav>
     </div>
+    <div id="what-the-hell-is-this">
+      <div class="page-title">
+        <h2>Tristan & Orion</h2>
+        <p class="lead">
+          Hello and Welcome to this amazing Journey!!!
+        </p>
+      </div>
     </div>
-    </nav>
-  </div>
-  <div id="what-the-hell-is-this">
-    <div class="page-title">
-      <h2>Tristan & Orion</h2>
-      <p class="lead">
-         Hello and Welcome to this amazing Journey!!!
-      </p>
-    </div>
-  </div>
+
+
+<!--Nasa APOD-->
+<div id="apodOutput">
+  <div id="img"></div>
+  <p id="copyright"></p>
+  <h1 id="title"></h1>
+  <p id="description"></p>
 </div>
 
-
 <script>
-$(function(){
-  var str = '#len'; //increment by 1 up to 1-nelemnts
-  $(document).ready(function(){
-    var i, stop;
-    i = 1;
-    stop = 4; //num elements
-    setInterval(function(){
-      if (i > stop){
-        return;
-      }
-      $('#len'+(i++)).toggleClass('bounce');
-    }, 500)
+  $(function(){
+    var str = '#len'; //increment by 1 up to 1-nelemnts
+    $(document).ready(function(){
+      var i, stop;
+      i = 1;
+      stop = 4; //num elements
+      setInterval(function(){
+        if (i > stop){
+          return;
+        }
+        $('#len'+(i++)).toggleClass('bounce');
+      }, 500)
+    });
   });
+</script>
+<script>
+$.ajax({
+    url:"https://api.nasa.gov/planetary/apod?api_key=CLPpS9vxS8aDZI6vHCgneaZYBxLlpputKncCwq5U",
+    success: function(gotit){
+      document.getElementById("img").innerHTML = "<img src=" +gotit.url+ "style='width: 70%;'/>";
+      document.getElementById("copyright").innerHTML = 'By' + gotit.copyright;
+      document.getElementById("title").innerHTML =  gotit.title;
+      document.getElementById("description").innerHTML =  gotit.description;
+    }
 });
 </script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
 </body>
 </html>
