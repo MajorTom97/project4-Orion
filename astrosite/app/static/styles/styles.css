@@ -460,3 +460,10 @@ text-decoration: none;
   .day_box>div>div{
   padding:5% 15%;   
   }
+
+  /* Footer Layout*/
+
+  .footer{
+    margin-top: auto;
+
+  }

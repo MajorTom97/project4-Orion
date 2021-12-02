@@ -73,7 +73,7 @@
       </form>
     </div>
   </nav>
-  <div class="footer">
+  {% comment %} <div class="footer">
     <div class="gridContainer">
         <div class="gridRow">
             <div class="gridColumn twelve">
@@ -109,9 +109,52 @@
                     </ul>
                 </div>
             </div>
-        </div>
-    </div>
-</div>                    
+        </div> {% endcomment %}
+    {% comment %} </div>
+</div>                     {% endcomment %}
+
+<footer class="footer" id="Footer">
+  <link rel="stylesheet" href="..\static\styles\footer.css">
+  <div class="container-footer" data-aos="fade-down">
+      <div class="row" data-aos="fade-down">
+          <div class="footer-colum" data-aos="fade-down">
+              <h4>Compañia</h4>
+              <ul>
+                 <li><a href="#" id="foo" data-toggle="popover" title="Popover Header" data-trigger="focus" data-content="Some content inside the popover">Sobre nosotros</a></li>
+                 <li><a href="#foo1" id="foo1" data-toggle="popover" title="Popover Header" data-trigger="focus" data-content="Some content inside the popover">Nuestros servicios</a></li>
+                 <li><a href="#foo2" id="foo2" data-toggle="popover" title="Popover Header" data-trigger="focus" data-content="Some content inside the popover">Politica de privacidad</a></li>   
+              </ul>
+          </div>
+          <div class="footer-colum" data-aos="fade-down">
+              <h4>Ayuda</h4>
+              <ul>
+                 <li><a href="#">FAQ</a></li>
+                 <li><a href="#">Paquetes</a></li>
+                 <li><a href="#">Soporte tecnico</a></li>
+                 <li><a href="#">Metodos de pago</a></li>   
+              </ul>
+          </div>
+          <div class="footer-colum" data-aos="fade-down">
+              <h4>Servicios</h4>
+              <ul>
+                 <li><a href="#">Bordado</a></li>
+                 <li><a href="#">Sublimacion</a></li>   
+                 <li><a href="#">Bisuteria</a></li>
+                 <li><a href="#">Apartados</a></li>
+              </ul>
+          </div>
+          <div class="footer-colum" data-aos="fade-down">
+              <h4>Siguenos</h4>
+              <div class="redes" data-aos="fade-down">
+                  <a href="https://www.facebook.com/comavdel/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                  <a href="https://www.instagram.com/com_avdel/" target="_blank"><i class="fab fa-instagram"></i></a>
+                  <a href="https://api.whatsapp.com/send?phone=50575471653"><i class="fab fa-whatsapp"></i></a>
+                  <a href="mailto:gestioncomavdel@hotmail.com"><i class="fas fa-envelope"></i></a>
+              </div>
+          </div>
+      </div>
+  </div>
+</footer>
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
 </body>

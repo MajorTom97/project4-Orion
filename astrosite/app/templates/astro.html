@@ -4,6 +4,29 @@
 Astrophotography
 {% endblock %}
 
+
 {% block content %}
-Post Photos and add some descriptions
+
+<h2 style="color:white">Post Photos and add some descriptions</h2>
+{% load static %}
+{% for AstroPost in object_list %}
+
+<div class="col mb-4">
+    <div class="card h-100">
+        <div class="card-body">
+            <h5 class="card-title">
+              <img src="{{AstroPost.body}}" style="width:120px; height: 120px;">
+                <strong>
+                    {{AstroPost.author}}   
+                </strong>
+
+            </h5>
+            <p class="card-text"> {{AstroPost.post}}</p>
+        </div>
+    </div>
+</div>
+
+{% endfor %}
+
+
 {% endblock %}

@@ -2,12 +2,14 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
+from django.views.generic import ListView, DetailView
 
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 from .forms import CreateUserForm
+from .models import AstroPost
 
 @login_required(login_url='signin')
 def index(request):
@@ -54,3 +56,8 @@ def signup(request):
 
         context = {'form': form}
         return render(request, "accounts/signup.html", context)  
+
+
+class PostView(ListView):
+    model = AstroPost
+    template_name ='astro.html'

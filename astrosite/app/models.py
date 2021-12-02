@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User 
 
 # Create your models here.
 
@@ -9,5 +10,10 @@ class News(models.Model):
     class Meta:
         verbose_name_plural = "News"
         
-class Astro(models.Model):
-    post = models.CharField(max_lenght=300)
+class AstroPost(models.Model):
+    post = models.CharField(max_length=300)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    body = models.ImageField(upload_to = 'post/')
+
+    def __str__(self):
+        return self.post + '|' + str(self.author)
