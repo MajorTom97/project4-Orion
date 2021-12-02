@@ -9,3 +9,5 @@ class News(models.Model):
     class Meta:
         verbose_name_plural = "News"
         
+class Astro(models.Model):
+    post = models.CharField(max_lenght=300)
