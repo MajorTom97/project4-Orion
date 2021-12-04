@@ -12,10 +12,10 @@ Astrophotography
 {% for AstroPost in object_list %}
 
 <div class="col mb-4">
-    <div class="card h-100">
+    <div class="card">
         <div class="card-body">
             <h5 class="card-title">
-              <img src="{{AstroPost.body}}" style="width:120px; height: 120px;">
+              <img src="/media/{{AstroPost.body}}" style="width:120px; height: 120px;">
                 <strong>
                     {{AstroPost.author}}   
                 </strong>

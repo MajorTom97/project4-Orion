@@ -1,4 +1,3 @@
-JS
 function calendar(moon){    
     var day = new Date().getDate()
     var dayWeek=moon.phase[day].dayWeek

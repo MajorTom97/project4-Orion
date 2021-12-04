@@ -63,7 +63,7 @@
   <nav class="subnavbar subnavbar-inverse">
     <div class="container-fluid">
       <div class="col-md-12">
-      <ul class="subnav navbar-nav">
+      <ul class="subnav navbar-nav d-flex flex-row">
         <li><a id="len1" class="hoverable" href="#">Home</a></li>
         <li><a id="len2" class="hoverable" href="#">News</a></li>
         <li><a id="len3" class="hoverable" href="#">Astrophotography</a></li>
@@ -86,11 +86,10 @@
     <div class="col-sm-8">
       <!--Nasa APOD-->
         <div id="apodOutput">
-          <div id="img">
+          <div id="img"></div>
             <p id="copyright"></p>
             <h1 id="title"></h1>
             <p id="description"></p>
-          </div>
         </div>
     </div>
 
@@ -152,10 +151,11 @@
 $.ajax({
     url:"https://api.nasa.gov/planetary/apod?api_key=CLPpS9vxS8aDZI6vHCgneaZYBxLlpputKncCwq5U",
     success: function(gotit){
-      document.getElementById("img").innerHTML = "<img src=" +gotit.url+ "style='width: 70%;'/>";
+      document.getElementById("img").innerHTML = "<img src='" + gotit.url + "' style='width: 70%;'/>";
       document.getElementById("copyright").innerHTML = 'By' + gotit.copyright;
       document.getElementById("title").innerHTML =  gotit.title;
-      document.getElementById("description").innerHTML =  gotit.description;
+      document.getElementById("description").innerHTML =  gotit.explanation;
+      console.log(gotit);
     }
 });
 </script>
