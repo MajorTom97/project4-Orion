@@ -1,18 +1,4 @@
-::-webkit-scrollbar {
-    width: 2px; /* ancho barra */
-  }
-  ::-webkit-scrollbar-track {
-    background: black; /* color fondo barra */
-    opacity: 0;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background: rgb(24, 39, 248); /* color barra */
-    border-radius: 50px; /* borde barra */
-  }
-
- 
-.container-footer{
+ .container{
     max-width: 1170px;
     margin: auto;
 }
@@ -91,20 +77,20 @@ ul{
     transition: all 0.5s ease;
 }
 
-.footer-colum .redes a:hover{
+.footer-column .redes a:hover{
     color: rgb(73, 91, 255);
     background-color: #ffffff;
 }
 
   /*Responsive*/
-@media(max-width: 767px){
+@media(max-width: 992px){
     .footer-colum{
         width: 50%;
         margin-bottom: 30px;
     }
 }
 
-@media(max-width: 574px){
+@media(max-width: 600px){
     .footer-colum{
         width: 100%;
     }

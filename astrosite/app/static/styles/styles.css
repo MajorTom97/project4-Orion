@@ -262,138 +262,18 @@ header .topnav-wrapper ul li img {
   margin-right: 10px;
 }
 
-/* Sub Top Navbar(Avaiable on Layout template)*/
-header .subtopnav {
-display: -webkit-box;
-display: flex;
--webkit-box-orient: horizontal;
--webkit-box-direction: normal;
-    flex-direction: row;
--webkit-box-pack: end;
-    justify-content: flex-end;
--webkit-box-align: center;
-    align-items: center;
-align-content: center;
-text-transform: uppercase;
-margin-bottom: 25px;
-margin-top: 10px;
-padding: 0 20px; }
-header .subtopnav a {
-display: table;
-font-size: 10px;
-line-height: 18px;
-letter-spacing: 0.03em;
-vertical-align: middle; }
-header .subtopnav a.active::after {
-display: none; }
-header .subtopnav a.active span {
-position: relative;
-display: inline-block; }
-header .subtopnav a.active span:after {
-  display: block;
-  content: '   ';
-  position: absolute;
-  margin: 0 auto;
-  width: 80%;
-  height: 5px;
-  background-color: #CB2026;
-  bottom: -6px;
-  left: 0;
-  right: 0; }
-header .subtopnav a.subscribe-top {
-background-color: #E8E8E8;
-color: #000000;
-padding: 3px 12px;
-border: 1px solid #E8E8E8;
--webkit-transition: background-color 0.3s ease-in, color 0.3s ease-in, border 0.3s ease-in;
-transition: background-color 0.3s ease-in, color 0.3s ease-in, border 0.3s ease-in; }
-header .subtopnav a.subscribe-top:hover {
-  background-color: #FFFFFF;
-  color: #000000;
-  border: 1px solid #000000; }
-header .subtopnav a.btn-search {
-padding-right: 0; }
-header .subtopnav a.btn-search img {
-  padding-left: 5px;
-  width: 20px;
-  height: 11px; }
-header .subtopnav a img {
-width: 13px;
-height: 10px; }
-header .subtopnav form {
-display: -webkit-box;
-display: flex; }
-header .subtopnav form input[type='text'] {
-border: 0; }
-header .subtopnav form input[type='text']::-webkit-input-placeholder {
-  font-size: 10px;
-  line-height: 18px;
-  letter-spacing: 0.03em;
-  color: red;
-  text-transform: uppercase; }
-header .subtopnav form input[type='text']::-moz-placeholder {
-  font-size: 10px;
-  line-height: 18px;
-  letter-spacing: 0.03em;
-  color: red;
-  text-transform: uppercase; }
-header .subtopnav form input[type='text']:-ms-input-placeholder {
-  font-size: 10px;
-  line-height: 18px;
-  letter-spacing: 0.03em;
-  color: red;
-  text-transform: uppercase; }
-header .subtopnav form input[type='text']::-ms-input-placeholder {
-  font-size: 10px;
-  line-height: 18px;
-  letter-spacing: 0.03em;
-  color: red;
-  text-transform: uppercase; }
-header .subtopnav form input[type='text']::placeholder {
-  font-size: 10px;
-  line-height: 18px;
-  letter-spacing: 0.03em;
-  color: red;
-  text-transform: uppercase; }
-header .subtopnav .searchform-wrapper .search-field {
-border-right: 0;
-height: 32px; }
-header .subtopnav .searchform-wrapper .search-field::-webkit-input-placeholder {
-text-transform: uppercase;
-font-size: 10px;
-letter-spacing: 0.03em; }
-header .subtopnav .searchform-wrapper .search-field::-moz-placeholder {
-text-transform: uppercase;
-font-size: 10px;
-letter-spacing: 0.03em; }
-header .subtopnav .searchform-wrapper .search-field:-ms-input-placeholder {
-text-transform: uppercase;
-font-size: 10px;
-letter-spacing: 0.03em; }
-header .subtopnav .searchform-wrapper .search-field::-ms-input-placeholder {
-text-transform: uppercase;
-font-size: 10px;
-letter-spacing: 0.03em; }
-header .subtopnav .searchform-wrapper .search-field::placeholder {
-text-transform: uppercase;
-font-size: 10px;
-letter-spacing: 0.03em; }
-header .subtopnav .searchform-wrapper .input-group-text {
-background-color: transparent;
-border-left: 0;
-padding-top: 0.29rem;
-padding-bottom: 0.29rem; }
-header .subtopnav .searchform-wrapper .input-group-text img {
-width: 14px; }
-header .subtopnav .searchform-wrapper a {
-display: table;
-vertical-align: middle;
-color: #000000; }
-header .subtopnav .searchform-wrapper a:hover {
-text-decoration: none; 
+/* Jumbotron */
+.jumbotron{
+  margin:15px 30px 0px 30px;
+  border-radius:10px;
+  background-image: url(../styles/img/astronaut.gif);  
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
 
-} 
 
+/*Moon Calendar */
 #phase_calendar{    
   max-width: 700px;
   margin:20px auto;

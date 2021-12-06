@@ -11,20 +11,20 @@ Astrophotography
 {% load static %}
 {% for AstroPost in object_list %}
 
-<div class="col mb-4">
-    <div class="card">
+<div class="card mb-3" style="max-width: 540px;">
+    <div class="row no-gutters">
+      <div class="col-md-4">
+        <img src="/media/{{AstroPost.body}}" alt="...">
+      </div>
+      <div class="col-md-8">
         <div class="card-body">
-            <h5 class="card-title">
-              <img src="/media/{{AstroPost.body}}" style="width:120px; height: 120px;">
-                <strong>
-                    {{AstroPost.author}}   
-                </strong>
-
-            </h5>
-            <p class="card-text"> {{AstroPost.post}}</p>
+          <h5 class="card-title"> By: {{AstroPost.author}}</h5>
+          <p class="card-text">{{AstroPost.post}}</p>
+          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
         </div>
+      </div>
     </div>
-</div>
+  </div>
 
 {% endfor %}
 

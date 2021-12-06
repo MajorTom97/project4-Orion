@@ -17,3 +17,4 @@ class AstroPost(models.Model):
 
     def __str__(self):
         return self.post + '|' + str(self.author)
+

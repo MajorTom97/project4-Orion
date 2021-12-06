@@ -9,152 +9,112 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Rampart+One&family=Road+Rage&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/0763869b33.js" crossorigin="anonymous"></script>
-    <!-- Sign Up and Sign In custom stylesheet-->
-    <link rel="stylesheet" type="text/css" href="..\static\styles\styles.css"></link>
+    <!-- Custom stylesheet-->
+    <link rel="stylesheet" type="text/css" href="../static/styles/styles.css"></link>
+    <link rel="stylesheet" type="text/css" href="../static/styles/footer.css">
 </head>
 <body>
-<div class="subtopnav-wrapper">
-<div class="container">
-    <div class="row no-gutters">
-        <div class="col-md-12">
-            <div class="subtopnav">
-                  <a href="/skytel" class="btn current-issue">Current Issue</a>
-                  <a href="https://skyandtelescope.dragonforms.com/loading.do?omedasite=SKY_renew" target="_blank" class="btn renew">Renew</a>
-                  <a target="_blank" href="http://www.shopatsky.com" class="btn subscribe-top" target="_blank" data-ga='{"event" : "newsletterInteraction", "newsletter_action" : "Subscription Submit", "newsletter_label" : "http://www.shopatsky.com"}'>Shop at Sky</a> 
-                  <a href="#" class="btn btn-search "><span>SEARCH</span> <img src="https://skyandtelescope.org/wp-content/themes/sky-and-telescope-2020/src/img/icon-search.svg" alt="Search Icon"/></a>
-                <div class="searchform-wrapper" style="background-color: #FFFFFF;position: absolute; top:0; right: 0;display:none;padding:13px 10px;z-index: 50;">
-                    <form role="search" method="get" class="search-form needs-validation form-inline" novalidate action="https://skyandtelescope.org">
-                        <div class="input-group">
-                            <input type="search" class="search-field form-control"  value="" name="s" id="validationCustomUsername" placeholder="Search" aria-describedby="inputGroupPrepend" required>
-                            <div class="input-group-prepend">
-                              <button type="submit" class="input-group-text btn" id="inputGroupPrepend"><img src="https://skyandtelescope.org/wp-content/themes/sky-and-telescope-2020/src/img/icon-search.svg" alt="Search Icon"/></button>
-                            </div>
-                        </div>
-                        <span style="padding:0  10px;"><a href="#" class="close-search">CLOSE <img src="https://skyandtelescope.org/wp-content/themes/sky-and-telescope-2020/src/img/icon-close.svg" alt="Close Icon"/></a></span>
-                    </form>
-                </div> 
+
+<!--TopNavbar -->
+<div class="topnav-wrapper" >
+    <div class="container">
+        <div class="row">
+            <div class="topnav">
+                <ul>
+                    <li><span class="js-toolbar-location"></span><button id="updateLocation">Update Location</button></li>
+                    <li><img src="https://skyandtelescope.org/wp-content/themes/sky-and-telescope-2020/src/img/icon-sunset.svg" alt="Sunset Icon"/> SUNSET: <span class="js-tooltop-sunset"></span></li>
+                    <li><img data-theme-link="https://skyandtelescope.org/wp-content/themes/sky-and-telescope-2020" src="https://skyandtelescope.org/wp-content/themes/sky-and-telescope-2020/src/img/icon-moon-waninggibbous.svg" alt="Full Moon Icon" class="moon-type"/> <span class="js-tooltop-moon">MOON: 90% Waxing Gibbous</span></li>
+                    <a target="" href="" class="btn btn3 star-chart-link" >Star Map</a>
+                </ul>
             </div>
         </div>
     </div>
 </div>
+
+<!--Jumbotron-->
+<div class="jumbotron">
+    <h1 class="display-4">Hello, Space Tarveler!</h1>
+    <p class="lead">There is a lot of Information behind what we think the stars are made of!</p>
+    <hr class="my-4">
+    <p>Let's take a survey across the Universe</p>
+    <a class="btn btn-warning btn-lg" href="#" role="button">Learn more</a>
+  </div>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-info">
+<div class="collapse navbar-collapse" id="navbarSupportedContent">
+<a class="navbar-brand" href="https://freeicons.io"><strong>Orion</strong>
+        <img src="..\static\styles\img\capsule.jpg" width="70" height="40">
+</a>
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+</button>
+    <ul class="navbar-nav mr-auto">
+    {% if user.is_authenticated %}
+    <li class="nav-item">
+    <a class="nav-link" href="#">Hello, {{user.username}}</a>
+    </li>
+    {% endif%}
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        More
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item" href="#">Profile</a>
+        <a class="dropdown-item" href="#">Seetings</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="{% url 'logout' %}"> Sign Out</a>
+        </div>
+    </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
 </div>
-
-    <nav class="navbar navbar-expand-lg navbar-dark bg-info">
-    <a class="navbar-brand" href="https://freeicons.io"><strong>Tristan</strong>
-        <img src="../static/styles/img/kite-48.png" width="70" height="40">
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Getting Started!</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            More
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">About us</a>
-            <a class="dropdown-item" href="#">Contact</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Report an Issue!</a>
-          </div>
-        </li>
-      </ul>
-      <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </form>
-    </div>
-  </nav>
-  {% comment %} <div class="footer">
-    <div class="gridContainer">
-        <div class="gridRow">
-            <div class="gridColumn twelve">
-                <div class="topRow">
+</nav>
+{% block content %} {% endblock %} 
+<footer class="footer" id="Footer">
+    <div class="container" data-aos="fade-down">
+        <div class="row" data-aos="fade-down">
+            <div class="footer-colum" data-aos="fade-down">
+                <h4>Tristan & Orion</h4>
                     <div class="logo">
-                        <a href="/" title="Astronomy Magazine">
-                        <img src="/sitefiles/images/logo.png" alt="Astronomy Magazine">
+                        <a href="/" title="Tristan & Orion">
+                        <img src="../static/styles/img/capsule.jpg" width="70" height="40" alt="Tristan & Orion">
                         </a>
-                    </div>
-                    <div class="nav ptSans">
-                        <ul>
-                            <li><a href="#">News</a></li>
-                            <li><a href="#">Observing</a></li>
-                        </ul></div>
-                    <div class="nav ptSans">
-                    <ul>
-                        <li><a href="#">Photos</a></li>
-                        <li><a href="#">Videos</a></li>
-                        <li><a href="http://cs.astronomy.com/b/default.aspx">Blogs</a></li>
-                        <li><a href="http://cs.astronomy.com">Community</a></li>
-                        <li><a href="https://www.myscienceshop.com/catalog/astronomy" target="_blank">Shop</a></li>
-                    </ul>
-                    </div>
-                    <div class="nav ptSans column3">
-                    <ul>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Advertising</a></li>
-                        <li><a href="#">Contact Us</a></li>
-                        <li><a href="http://www.kalmbach.com/termsofuse" target="_blank">Terms of Use</a></li>
-                        <li><a href="http://www.kalmbach.com/privacy.aspx" target="_blank">Privacy Policy</a></li>
-                        <li><a href="http://www.kalmbach.com/copyrightpolicy" target="_blank">Copyright Policy</a></li>
-                        <li><a href="https://www.kalmbach.com/accessibility-statement/">Website Accessibility</a></li>
-                    </ul>
                 </div>
             </div>
-        </div> {% endcomment %}
-    {% comment %} </div>
-</div>                     {% endcomment %}
-{% block content %} {% endblock %}
-<footer class="footer" id="Footer">
-  <link rel="stylesheet" href="..\static\styles\footer.css">
-  <div class="container-footer" data-aos="fade-down">
-      <div class="row" data-aos="fade-down">
-          <div class="footer-colum" data-aos="fade-down">
-              <h4>Compañia</h4>
-              <ul>
-                 <li><a href="#" id="foo" data-toggle="popover" title="Popover Header" data-trigger="focus" data-content="Some content inside the popover">Sobre nosotros</a></li>
-                 <li><a href="#foo1" id="foo1" data-toggle="popover" title="Popover Header" data-trigger="focus" data-content="Some content inside the popover">Nuestros servicios</a></li>
-                 <li><a href="#foo2" id="foo2" data-toggle="popover" title="Popover Header" data-trigger="focus" data-content="Some content inside the popover">Politica de privacidad</a></li>   
-              </ul>
-          </div>
-          <div class="footer-colum" data-aos="fade-down">
-              <h4>Ayuda</h4>
-              <ul>
-                 <li><a href="#">FAQ</a></li>
-                 <li><a href="#">Paquetes</a></li>
-                 <li><a href="#">Soporte tecnico</a></li>
-                 <li><a href="#">Metodos de pago</a></li>   
-              </ul>
-          </div>
-          <div class="footer-colum" data-aos="fade-down">
-              <h4>Servicios</h4>
-              <ul>
-                 <li><a href="#">Bordado</a></li>
-                 <li><a href="#">Sublimacion</a></li>   
-                 <li><a href="#">Bisuteria</a></li>
-                 <li><a href="#">Apartados</a></li>
-              </ul>
-          </div>
-          <div class="footer-colum" data-aos="fade-down">
-              <h4>Siguenos</h4>
-              <div class="redes" data-aos="fade-down">
-                  <a href="https://www.facebook.com/comavdel/" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                  <a href="https://www.instagram.com/com_avdel/" target="_blank"><i class="fab fa-instagram"></i></a>
-                  <a href="https://api.whatsapp.com/send?phone=50575471653"><i class="fab fa-whatsapp"></i></a>
-                  <a href="mailto:gestioncomavdel@hotmail.com"><i class="fas fa-envelope"></i></a>
-              </div>
-          </div>
-      </div>
-  </div>
-</footer>
+            <div class="footer-colum" data-aos="fade-down">
+                <h4>Share</h4>
+                <ul>
+                    <li><a href="#">Photos</a></li>
+                    <li><a href="#">Videos</a></li>
+                    <li><a href="#">News</a></li>
+                    <li><a href="#">Observing</a></li>
+                </ul>
+            </div>
+            <div class="footer-colum" data-aos="fade-down">
+                <h4>About Us</h4>
+                <ul>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#" target="_blank">Terms of Use</a></li>
+                    <li><a href="http://www.kalmbach.com/privacy.aspx" target="_blank">Privacy Policy</a></li>
+                    <li><a href="http://www.kalmbach.com/copyrightpolicy" target="_blank">Copyright Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-colum" data-aos="fade-down">
+                <h4>Find us</h4>
+                <div class="redes" data-aos="fade-down">
+                    <a href="https://www.facebook.com/Tristan&Orion/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/Tristan&Orion/" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fa fa-reddit-alien" aria-hidden="true"></i></a>
+                    <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                </div>
+            </div>
+    </div> 
+</div>
+</footer>                   
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
 </body>
