@@ -6,21 +6,91 @@ News
 
 {% block content %}
 Astronomical News, Launch Space and so others
+<style type="text/css">
+  .fit .tig {
+    width: 100%;
+    height: 100%;
+    object-fit: fit;
+}
+
+@supports(object-fit: fit) {
+    .fit .tig {
+        object-fit: fit;
+    }
+}
+
+#_form {
+  width: 250px;
+  margin: 0 auto;
+  height: 50px;
+}
+
+#_form p {
+  text-align: center;
+}
+
+#_form label {
+  font-size: 40px;
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+label {
+  color: grey;
+}
+
+.neutral1:hover {
+  color: red;
+}
+
+label:hover {
+  cursor: pointer;
+}
+</style>
+
+<div class="container">
+<div class="row">
 {% for article in apinews %}
-<div class="card mb-3" style="max-width: 540px;">
-    <div class="row no-gutters">
-      <div class="col-md-4">
-        <img src="{{article.imageUrl}}" style="18rem">
-      </div>
-      <div class="col-md-8">
-        <div class="card-body">
-          <h5 class="card-title">{{article.title}}</h5>
-          <p class="card-text">{{article.summary}}</p>
-          <p class="card-text"><small class="text-muted">{{article.publishedAt}}</small></p>
+<div class="card mb-3 mx-4" style="max-width: 100%;">
+  <div class="row no-gutters">
+    <div class="col-md-4 fit">
+      <img class="tig" src="{{article.imageUrl}}" style="...">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title text-dark">{{article.title}}</h5>
+        <p class="card-text text-dark">{{article.summary}}</p>
+        <p class="card-text text-dark"><small class="text-muted">{{article.publishedAt}}</small></p>
+        <div class="card-footer text-muted">
+          <div id="_form">
+            <p class="clasificacion">
+                <input id="radio1" type="radio" value="1">
+                <label class="neutral1" for="radio3"><i class="fa fa-heart" aria-hidden="true"></i></label>
+            </p>
+            <span class="totallike">
+
+            </span>
+        </div>
         </div>
       </div>
     </div>
   </div>
+</div>
 {% endfor %}
+</div>
+</div>
 
+<script type="text/javascript">
+  var like = 0;
+  var total = 0;
+          
+  document.querySelector('.neutral1').addEventListener('click', function(){
+     like++;
+     total = like;
+     document.querySelector('.totallike').innerHTML = total;
+  });
+</script>
 {% endblock %}
+
