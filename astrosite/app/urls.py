@@ -13,5 +13,7 @@ urlpatterns = [
     
     # Paths for template views
     path('astro/', PostView.as_view(), name="astro"),
+    path('news/', views.News, name="news"),
+    path('community/', views.community, name="community")
 ]
 

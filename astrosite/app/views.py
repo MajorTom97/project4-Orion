@@ -6,6 +6,7 @@ from django.views.generic import ListView, DetailView
 
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+import requests
 
 # Create your views here.
 from .forms import CreateUserForm
@@ -61,3 +62,19 @@ def signup(request):
 class PostView(ListView):
     model = AstroPost
     template_name ='astro.html'
+
+# Astronomy News
+
+def News(request):
+    apinews = []
+    try:
+        response = requests.get("https://api.spaceflightnewsapi.net/v3/articles?_limit=10")
+        apinews = response.json()
+    
+    except:
+        print("ERROR")
+    context = {"apinews": apinews}
+    return render(request, "news.html", context)
+
+def community(request):
+    return render(request, "community.html")
