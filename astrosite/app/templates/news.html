@@ -65,8 +65,8 @@ label:hover {
         <p class="card-text text-dark"><small class="text-muted">{{article.publishedAt}}</small></p>
         <div class="card-footer text-muted">
           <div id="_form">
-            <p class="clasificacion">
-                <input id="radio1" type="radio" value="1">
+            <p class="clasificacion" data-idpubli="{% url 'ReactNews' article.id %}" onclick="publi(this)">
+                <input  id="radio1" type="radio" value="1">
                 <label class="neutral1" for="radio3"><i class="fa fa-heart" aria-hidden="true"></i></label>
             </p>
             <span class="totallike">
@@ -85,12 +85,25 @@ label:hover {
 <script type="text/javascript">
   var like = 0;
   var total = 0;
-          
-  document.querySelector('.neutral1').addEventListener('click', function(){
+  
+  function publi(element){
+    alert(element.dataset.idpubli)
+    fetch(element.dataset.idpubli)
+        .then(response => response.json())
+        .then(data => {
+            //Añadir cantidad de votos
+            console.log(data)
+        });
+  }
+  {% comment %} document.querySelector('.neutral1').addEventListener('click', function(){
      like++;
      total = like;
      document.querySelector('.totallike').innerHTML = total;
-  });
+  }); {% endcomment %}
 </script>
 {% endblock %}
 
+Astronomy API
+Appilcation Id: 062cca53-4e28-4b39-87e5-c641fb51ada5
+
+Application Secret: bf5d8dcbf396f13a1f87563a3f06c0ac7a5bb2b9e0b7866526d1cd9aac3a4321be26dd3059bb9bc641c30bf484b15ded1156890b035b3bea316e74551f299c49ec5f6d2d12833de9ea7806d910e754b2821604a8b8e4d2024006a7756f09a1a7d33c16ac47cbc36dbe8b651716373329

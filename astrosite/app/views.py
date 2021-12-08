@@ -1,3 +1,4 @@
+from django.http.response import JsonResponse
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth.forms import UserCreationForm
@@ -10,7 +11,7 @@ import requests
 
 # Create your views here.
 from .forms import CreateUserForm
-from .models import AstroPost
+from .models import AstroPost, News as NewsModel
 
 @login_required(login_url='signin')
 def index(request):
@@ -75,6 +76,20 @@ def News(request):
         print("ERROR")
     context = {"apinews": apinews}
     return render(request, "news.html", context)
+
+def ReactNews(request, id_news):
+    notice = NewsModel.objects.filter(id_news=id_news).first()
+    if not notice:
+        notice = NewsModel.objects.create(id_news=id_news)
+    if not NewsModel.objects.filter(id_news=id_news, reactions=request.user).first():
+        notice.reactions.add(request.user)
+    
+    return JsonResponse({
+        "id_news":id_news,
+        "reactions":notice.reactions.count()
+    })
+
+
 
 def community(request):
     return render(request, "community.html")
