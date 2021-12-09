@@ -1,0 +1,39 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block content %}
+
+<style>
+    .profile-pic{
+        max-width: 200px;
+        maxheight: 200px;
+        margin: 0 auto;
+        border-radius: 50%;
+    }
+</style>
+
+<br>
+<div class="row">
+    <div class="col-md-4">
+        <div class="card" style="width: 18rem;">
+            <img src="{{request.user.userSetting.profile_pic.url}}" class="profile-pic" alt="...">
+            <div class="card-body">
+            <h5 class="card-title">Account Settings</h5>
+            <p class="card-text">Customize your profile</p>
+            <a class="btn btn-warning" href={% url 'index' %}>&#8592;Back to Profile</a> 
+            </div>
+        </div>
+
+        <div class = "col-md-8">
+            <div class="card card-body">
+                <form methods="POST" action="">
+                     {% csrf_token %}
+                     {{form.as_p}}
+                    <input class="btn btn-info" type="submit" name="Updated Information">
+                </form>
+            </div>
+        <div>
+    </div>
+</div>
+
+{% endblock %}

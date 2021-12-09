@@ -4,15 +4,16 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 import requests
 
 # Create your views here.
-from .forms import CreateUserForm
-from .models import AstroPost, News as NewsModel
+from .forms import CreateUserForm, profileForm
+from .models import AstroPost, News as NewsModel, userSetting
 
 @login_required(login_url='signin')
 def index(request):
@@ -72,6 +73,46 @@ def signup(request):
 class PostView(ListView):
     model = AstroPost
     template_name ='astro.html'
+    context_object_name = 'posts'
+    oredering = ['-date_posted']
+    context = {
+        'posts': AstroPost.objects.all()
+    }
+
+class PostDetailView(DetailView):
+    model = AstroPost
+
+class PostCreateView(LoginRequiredMixin, CreateView):
+    model = AstroPost
+    fields = ['title', 'content']
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+
+class PostUpdatedView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    model = AstroPost
+    fields = ['title', 'content']
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+    
+    def test_func(self):
+        AstroPost = self.get_object()
+        if self.request.user == AstroPost.author:
+            return True
+        return False
+
+class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    model = AstroPost
+    success_url = '/astro'
+
+    def test_func(self):
+        AstroPost = self.get_object()
+        if self.request.user == AstroPost.author:
+            return True
+        return False
 
 # Astronomy News
 
@@ -98,6 +139,19 @@ def ReactNews(request, id_news):
         "reactions":notice.reactions.count()
     })
 
+@login_required(login_url='signin')
+def accountSettings(request):
+    userSetting = request.user.userSetting
+    form = profileForm(instance=userSetting)
+
+    if request.method == 'POST':
+        form = profileForm(request.POST, request.FILES, instance=userSetting)
+        if form.is_valid():
+            form.save
+    
+    context={'form':form}
+    return render(request, "accounts/profile.html", context)
 
 def community(request):
-    return render(request, "community.html")
+    context = {}
+    return render(request, "community.html", context)
