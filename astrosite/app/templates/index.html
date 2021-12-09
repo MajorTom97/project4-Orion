@@ -10,10 +10,23 @@
     <link href="https://fonts.googleapis.com/css2?family=Rampart+One&family=Road+Rage&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/0763869b33.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-    <!-- Sign Up and Sign In custom stylesheet-->
+    <!-- Custom stylesheet-->
     <link rel="stylesheet" type="text/css" href="..\static\styles\styles.css"></link>
 </head>
 <body>
+<style type="text/css">
+    .fit .tig {
+      width: 100%;
+      height: 100%;
+      object-fit: fit;
+  }
+  
+  @supports(object-fit: fit) {
+      .fit .tig {
+          object-fit: fit;
+      }
+  }
+</style>
 <header>
 <div class="topnav-wrapper" >
     <div class="container">
@@ -30,6 +43,8 @@
     </div>
 </div>
 </header>
+
+<!-- Navbar Principal -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-info">
   <a class="navbar-brand" href="https://freeicons.io"><strong>Orion</strong>
       <img src="..\static\styles\img\capsule.jpg" width="70" height="40">
@@ -45,9 +60,30 @@
       <a class="nav-link" href="#">Hello, {{user.username}}</a>
       </li>
       {% endif%}
-      <li class="nav-item dropdown">
-        <a class="dropdown-item" href="{% url 'logout' %}">Sign out</a>
+      <li class="nav-item active">
+        <a class="nav-link" href="#"><i class="fa fa-home" aria-hidden="true"></i>
+          Home <span class="sr-only">(current)</span></a>
       </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="#">News</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Gallery</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Community</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        More
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item" href="#">Profile</a>
+        <a class="dropdown-item" href="#">Seetings</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="{% url 'logout' %}">Sign Out</a>
+        </div>
+    </li>
     </ul>
   </div>
 <div class="navbar-end">
@@ -59,38 +95,34 @@
   </div>
   </div>
 </nav>
-<div class="container-fluid">
-  <nav class="subnavbar subnavbar-inverse">
-    <div class="container-fluid">
-      <div class="col-md-12">
-      <ul class="subnav navbar-nav d-flex flex-row">
-        <li><a id="len1" class="hoverable" href="#">Home</a></li>
-        <li><a id="len2" class="hoverable" href="#">News</a></li>
-        <li><a id="len3" class="hoverable" href="#">Astrophotography</a></li>
-        <li><a id="len4" class="hoverable" href="#">Community</a></li>
-      </ul>
-    </div>
-    </div>
-    </nav>
-  </div>
-  <div id="what-the-hell-is-this">
-    <div class="page-title">
-      <h2>Tristan & Orion</h2>
-      <p class="lead">
-        Hello and Welcome to this amazing Journey!!!
-      </p>
-    </div>
-  </div>
+
+<!--Jumbotron-->
+<div class="jumbotron">
+  <h1 class="display-4">Tristan & Orion</h1>
+  <p class="lead">There is a lot of Information behind what we think the stars are made of!</p>
+  <hr class="my-4">
+  <p>Welcome to this Amazing Journey!!!</p>
+  <a class="btn btn-warning btn-lg" href="#" role="button">Learn more</a>
+</div>
+
+<!-- Home Page -->
 <div class="container">
   <div class="row">
-    <div class="col-sm-8">
+    <div class="col-sm-8 fit">
+      
       <!--Nasa APOD-->
-        <div id="apodOutput">
-          <div id="img"></div>
-            <p id="copyright"></p>
-            <h1 id="title"></h1>
-            <p id="description"></p>
+      <div class="card mb-3">
+        <img src="..." id="img" class="tig" alt="...">
+        <div class="card-body">
+          <h5 id="title"></h5>
+          <p id="description">>
+            <a class="btn btn-info" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+              See more
+            </a>
+          </p>
+          <p id="copyright"><small class="text-muted"></small></p>
         </div>
+      </div>
     </div>
 
     <div class="col-sm-4">
@@ -98,37 +130,66 @@
         <!--Aquí va el calendario Lunar-->
       </div>
     </div>
-  </div>
-  <div class="row">
+    {% for blog in blogNews %}
     <div class="col-sm">
-
+      <div class="col mb-4 fit">
+        <div class="card" style="max-width: 100%;">
+          <img src="{{blog.imageUrl}}" class="card-img-top tig" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">{{blog.title}}</h5>
+            <p class="card-text">{{blog.summary}}</p>
+            <footer class="blockquote-footer">Source <cite title="Source Title">{{blog.newsSite}}</cite></footer>
+          </div>
+          <a href="{{blog.url}}"><button type="button" class="btn btn-warning btn-lg btn-block">Visit</button></a>
+        </div>
+      </div>
     </div>
-    <div class="col-sm">
-    
-    </div>
-    <div class="col-sm">
-
-    </div>
+      {% endfor %}
   </div>
 </div>
 
-<script>
-  $(function(){
-    var str = '#len'; //increment by 1 up to 1-nelemnts
-    $(document).ready(function(){
-      var i, stop;
-      i = 1;
-      stop = 4; //num elements
-      setInterval(function(){
-        if (i > stop){
-          return;
-        }
-        $('#len'+(i++)).toggleClass('bounce');
-      }, 500)
-    });
-  });
-</script>
-
+<footer class="footer" id="Footer">
+  <link rel="stylesheet" type="text/css" href="../static/styles/footer.css">
+  <div class="container" data-aos="fade-down">
+      <div class="row" data-aos="fade-down">
+          <div class="footer-colum" data-aos="fade-down">
+              <h4>Tristan & Orion</h4>
+                  <div class="logo">
+                      <a href="/" title="Tristan & Orion">
+                      <img src="../static/styles/img/capsule.jpg" width="70" height="40" alt="Tristan & Orion">
+                      </a>
+              </div>
+          </div>
+          <div class="footer-colum" data-aos="fade-down">
+              <h4>Share</h4>
+              <ul>
+                  <li><a href="#">Photos</a></li>
+                  <li><a href="#">Videos</a></li>
+                  <li><a href="#">News</a></li>
+                  <li><a href="#">Observing</a></li>
+              </ul>
+          </div>
+          <div class="footer-colum" data-aos="fade-down">
+              <h4>About Us</h4>
+              <ul>
+                  <li><a href="#">Contact Us</a></li>
+                  <li><a href="#" target="_blank">Terms of Use</a></li>
+                  <li><a href="http://www.kalmbach.com/privacy.aspx" target="_blank">Privacy Policy</a></li>
+                  <li><a href="http://www.kalmbach.com/copyrightpolicy" target="_blank">Copyright Policy</a></li>
+              </ul>
+          </div>
+          <div class="footer-colum" data-aos="fade-down">
+              <h4>Find us</h4>
+              <div class="redes" data-aos="fade-down">
+                  <a href="https://www.facebook.com/Tristan&Orion/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                  <a href="https://www.instagram.com/Tristan&Orion/" target="_blank"><i class="fab fa-instagram"></i></a>
+                  <a href="#"><i class="fa fa-reddit-alien" aria-hidden="true"></i></a>
+                  <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+              </div>
+          </div>
+  </div> 
+</div>
+</footer>  
 <script>
   function load_moon_phases(obj,callback){
     var gets=[]

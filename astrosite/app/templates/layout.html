@@ -15,31 +15,6 @@
 </head>
 <body>
 
-<!--TopNavbar -->
-<div class="topnav-wrapper" >
-    <div class="container">
-        <div class="row">
-            <div class="topnav">
-                <ul>
-                    <li><span class="js-toolbar-location"></span><button id="updateLocation">Update Location</button></li>
-                    <li><img src="https://skyandtelescope.org/wp-content/themes/sky-and-telescope-2020/src/img/icon-sunset.svg" alt="Sunset Icon"/> SUNSET: <span class="js-tooltop-sunset"></span></li>
-                    <li><img data-theme-link="https://skyandtelescope.org/wp-content/themes/sky-and-telescope-2020" src="https://skyandtelescope.org/wp-content/themes/sky-and-telescope-2020/src/img/icon-moon-waninggibbous.svg" alt="Full Moon Icon" class="moon-type"/> <span class="js-tooltop-moon">MOON: 90% Waxing Gibbous</span></li>
-                    <a target="" href="" class="btn btn3 star-chart-link" >Star Map</a>
-                </ul>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!--Jumbotron-->
-<div class="jumbotron">
-    <h1 class="display-4">Hello, Space Tarveler!</h1>
-    <p class="lead">There is a lot of Information behind what we think the stars are made of!</p>
-    <hr class="my-4">
-    <p>Let's take a survey across the Universe</p>
-    <a class="btn btn-warning btn-lg" href="#" role="button">Learn more</a>
-  </div>
-
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-info">
 <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -55,6 +30,19 @@
     <a class="nav-link" href="#">Hello, {{user.username}}</a>
     </li>
     {% endif%}
+    <li class="nav-item active">
+        <a class="nav-link" href="#"><i class="fa fa-home" aria-hidden="true"></i>
+            Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="#">News</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Gallery</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Community</a>
+      </li>
     <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         More
@@ -73,6 +61,16 @@
     </form>
 </div>
 </nav>
+
+<!--Jumbotron-->
+<div class="jumbotron">
+    <h1 class="display-4">Hello, Space Tarveler!</h1>
+    <p class="lead">There is a lot of Information behind what we think the stars are made of!</p>
+    <hr class="my-4">
+    <p>Let's take a survey across the Universe</p>
+    <a class="btn btn-warning btn-lg" href="#" role="button">Learn more</a>
+</div>
+
 {% block content %} {% endblock %} 
 <footer class="footer" id="Footer">
     <div class="container" data-aos="fade-down">

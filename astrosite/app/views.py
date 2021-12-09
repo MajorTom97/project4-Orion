@@ -1,3 +1,4 @@
+from django.http import response
 from django.http.response import JsonResponse
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
@@ -15,7 +16,15 @@ from .models import AstroPost, News as NewsModel
 
 @login_required(login_url='signin')
 def index(request):
-    return render(request, "index.html")
+    blogNews = []
+    try:
+        response = requests.get("https://api.spaceflightnewsapi.net/v3/blogs?_limit=3")
+        blogNews = response.json()
+        print(blogNews)
+    except:
+        print("---------Upsss----------")
+    context = {"blogNews": blogNews}
+    return render(request, "index.html", context)
 
 def singin(request):
     if request.user.is_authenticated:
@@ -39,7 +48,7 @@ def singin(request):
 def signoutUser(request):
     logout(request)
     messages.success(request, 'Come back soon!')
-    return render(request,'signin.html')
+    return render(request,'signout.html')
 
 def signup(request):
     if request.user.is_authenticated:
@@ -88,7 +97,6 @@ def ReactNews(request, id_news):
         "id_news":id_news,
         "reactions":notice.reactions.count()
     })
-
 
 
 def community(request):

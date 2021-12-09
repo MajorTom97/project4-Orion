@@ -15,6 +15,6 @@ urlpatterns = [
     path('astro/', PostView.as_view(), name="astro"),
     path('news/', views.News, name="news"),
     path('reactions/<int:id_news>', views.ReactNews, name="ReactNews"),
-    path('community/', views.community, name="community")
+    path('community/', views.community, name="community"),
 ]
 
