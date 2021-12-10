@@ -11,9 +11,10 @@ Astrophotography
 {% load static %}
 
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+<button type="button" class="btn btn-primary" onclick="loadContent(this)" data-urlpage="{% url 'astro-create' %}">
   Add a Post 
-  </button>
+</button>
+
   
   <!-- Modal -->
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -25,21 +26,9 @@ Astrophotography
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div class="modal-body">
-          <div class="modal-body">
-              {% load crispy_form_tags %}
-              <form method="POST">
-                  {% csrf_token %}
-                  <fieldset class="form-group">
-                      <legend class="border-bottom mb-4">Astronomy Post</legend>
-                      {{ form|crispy }}
-                  </fieldset>
-                  <div class="form-group">
-                      <button class="btn btn-outline-info" type="submit">Post</button>
-                  </div>
-              </form>
-
-          </div>
+        <div class="modal-body" id="modalPost">
+              
+        </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-success" data-toggle="tooltip" data-placement="bottom" title="Surprise us!!!">Load an Image</button>
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -62,11 +51,45 @@ Astrophotography
           <p class="card-text">{{AstroPost.post}}</p>
           <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
         </div>
+        <div class="card-body">
+          <button type="button" class="btn btn-primary" onclick="loadContent(this)" data-urlpage="{% url 'astro-update' AstroPost.pk %}">
+            Edit 
+          </button>
+          <button type="button" class="btn btn-primary"  onclick="loadContent(this)" data-urlpage="{% url 'astro-delete' AstroPost.pk %}">
+            Delete
+          </button>
+        </div>
       </div>
     </div>
   </div>
+</div>
 
 {% endfor %}
 
+<script>
+  var myModal = undefined
+  var contentModel = undefined
+  var loadContent = () => {}
+  window.addEventListener('DOMContentLoaded', (event) => {
+    console.log('DOM fully loaded and parsed');
+
+    myModal = new bootstrap.Modal(document.getElementById('exampleModal'), [])
+    contentModel = document.querySelector("#modalPost")
+    loadContent= (element) =>{
+
+        let url = element.dataset.urlpage;
+        fetch(url)
+        .then(response => response.text())
+        .then(data => {
+            contentModel.innerHTML = data
+            const form = contentModel.querySelector("form")
+            if(form){form.setAttribute("action", url)}
+            myModal.show()
+        });
+    }
+
+});
+
+</script>
 
 {% endblock %}

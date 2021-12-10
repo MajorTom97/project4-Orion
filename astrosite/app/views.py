@@ -84,7 +84,7 @@ class PostDetailView(DetailView):
 
 class PostCreateView(LoginRequiredMixin, CreateView):
     model = AstroPost
-    fields = ['title', 'content']
+    fields = ['post', 'body']
 
     def form_valid(self, form):
         form.instance.author = self.request.user
@@ -92,7 +92,7 @@ class PostCreateView(LoginRequiredMixin, CreateView):
 
 class PostUpdatedView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = AstroPost
-    fields = ['title', 'content']
+    fields = ['post', 'body']
 
     def form_valid(self, form):
         form.instance.author = self.request.user
