@@ -16,7 +16,7 @@
 <body>
 
 <!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-info">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 <div class="collapse navbar-collapse" id="navbarSupportedContent">
 <a class="navbar-brand" href="https://freeicons.io"><strong>Orion</strong>
         <img src="..\static\styles\img\capsule.jpg" width="70" height="40">
@@ -31,17 +31,19 @@
     </li>
     {% endif%}
     <li class="nav-item active">
-        <a class="nav-link" href="#"><i class="fa fa-home" aria-hidden="true"></i>
-            Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="#"><i class="fa fa-home" aria-hidden="true"></i>Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" href="#">News</a>
+        <a class="nav-link" href="{% url 'news' %}"><i class="fa fa-newspaper-o" aria-hidden="true"></i>
+            News</a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" href="#">Gallery</a>
+        <a class="nav-link" href="{% url 'astro' %}"><i class="fa fa-picture-o" aria-hidden="true"></i>
+            Gallery</a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" href="#">Community</a>
+        <a class="nav-link" href="{% url 'community' %}"><i class="fa fa-users" aria-hidden="true"></i>
+            Community</a>
       </li>
     <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -63,8 +65,8 @@
 </nav>
 
 <!--Jumbotron-->
-<div class="jumbotron">
-    <h1 class="display-4">Hello, Space Tarveler!</h1>
+<div class="jumbotron text-white text-center">
+    <h1 class="display-4">Hello, Space Traveler!</h1>
     <p class="lead">There is a lot of Information behind what we think the stars are made of!</p>
     <hr class="my-4">
     <p>Let's take a survey across the Universe</p>

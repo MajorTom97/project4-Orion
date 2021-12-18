@@ -5,7 +5,7 @@ News
 {% endblock %}
 
 {% block content %}
-Astronomical News, Launch Space and so others
+
 <style type="text/css">
   .fit .tig {
     width: 100%;
@@ -69,9 +69,7 @@ label:hover {
                 <input  id="radio1" type="radio" value="1">
                 <label class="neutral1" for="radio3"><i class="fa fa-heart" aria-hidden="true"></i></label>
             </p>
-            <span class="totallike">
-
-            </span>
+            <span class="totallike">0 likes</span>
         </div>
         </div>
       </div>
@@ -95,11 +93,28 @@ label:hover {
             console.log(data)
         });
   }
-  {% comment %} document.querySelector('.neutral1').addEventListener('click', function(){
-     like++;
-     total = like;
-     document.querySelector('.totallike').innerHTML = total;
-  }); {% endcomment %}
+
+  {% comment %} function addPictureToPage(data)
+
+  const likesCounter = document.querySelector('.totallike')
+  likesCounter.innerText = `${data.likes} likes` 
+
+  const likeButton = document.querySelector('.like-button')
+
+  likeButton.addEventListener('click', function(event){
+    likesCounter.innerText = incrementLikes(data)
+  })
+  
+  function incrementLikes(news){
+    let likes = 0
+    fetch(element.dataset.idpubli)
+        .then(response => response.json())
+        .then(data => {
+            //Añadir cantidad de votos
+            likes = data.likes
+        })
+    let newsLikes = likes + 1 
+  } {% endcomment %}
 </script>
 {% endblock %}
 

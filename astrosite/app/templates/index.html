@@ -45,7 +45,7 @@
 </header>
 
 <!-- Navbar Principal -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-info">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand" href="https://freeicons.io"><strong>Orion</strong>
       <img src="..\static\styles\img\capsule.jpg" width="70" height="40">
   </a>
@@ -61,17 +61,18 @@
       </li>
       {% endif%}
       <li class="nav-item active">
-        <a class="nav-link" href="#"><i class="fa fa-home" aria-hidden="true"></i>
-          Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="#"><i class="fa fa-home" aria-hidden="true"></i>Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" href="#">News</a>
+        <a class="nav-link" href="{% url 'news' %}"><i class="fa fa-newspaper-o" aria-hidden="true"></i>News</a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" href="#">Gallery</a>
+        <a class="nav-link" href="{% url 'astro' %}"><i class="fa fa-picture-o" aria-hidden="true"></i>
+          Gallery</a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" href="#">Community</a>
+        <a class="nav-link" href="{% url 'community' %}"><i class="fa fa-users" aria-hidden="true"></i>
+          Community</a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -97,13 +98,14 @@
 </nav>
 
 <!--Jumbotron-->
-<div class="jumbotron">
+<div class="jumbotron text-white text-center">
   <h1 class="display-4">Tristan & Orion</h1>
   <p class="lead">There is a lot of Information behind what we think the stars are made of!</p>
   <hr class="my-4">
   <p>Welcome to this Amazing Journey!!!</p>
   <a class="btn btn-warning btn-lg" href="#" role="button">Learn more</a>
 </div>
+
 
 <!-- Home Page -->
 <div class="container">
@@ -112,10 +114,10 @@
       
       <!--Nasa APOD-->
       <div class="card mb-3">
-        <img src="..." id="img" class="tig" alt="...">
+        <div id="img" class="tig fit" alt="..." style="padding-left: 0px;  padding-right: 0px;"></div>
         <div class="card-body">
           <h5 id="title"></h5>
-          <p id="description">>
+          <p id="description">
             <a class="btn btn-info" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
               See more
             </a>

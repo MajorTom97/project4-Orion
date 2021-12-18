@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User 
+from embed_video.fields import EmbedVideoField
 
 # Create your models here.
 
@@ -17,9 +18,6 @@ class AstroPost(models.Model):
 
     def __str__(self):
         return self.post + '|' + str(self.author)
-
-# class Reaction(models.Model):
-#     user = models.ForeignKey(User, on_delete=models.CASCADE)
     
 class userSetting(models.Model):
     username = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
@@ -30,3 +28,14 @@ class userSetting(models.Model):
 
     def __str__(self):
         return self.name
+
+class Video(models.Model):
+    title = models.CharField(max_length=100)
+    added = models.DateTimeField(auto_now_add=True)
+    url = EmbedVideoField()
+
+    def __str__(self):
+        return str(self.title)
+    
+    class Meta:
+        ordering = ['-added']

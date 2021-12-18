@@ -167,10 +167,14 @@ header .topnav-wrapper ul li img {
 .jumbotron{
   margin:15px 30px 0px 30px;
   border-radius:10px;
-  background-image: url(../styles/img/ObservableUniv.gif);  
+  background-image: url(../styles/img/stars.gif);  
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
+  text-align: center;
+  font-family: 'Rampart One', cursive;
+  text-shadow: #5161ce;
+  text-decoration-color: #FFFFFF;
 }
 
 

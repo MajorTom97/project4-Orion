@@ -1,5 +1,5 @@
 <form method="POST">
     {% csrf_token %}
-    ¿Estás seguro que deseas borrar el post"{{ object }}"?
-    <input type="submit" value="Submit" />
+    Are you sure you want to delete this Post?{{ object }}"?
+    <input class="btn btn-danger" type="submit" value="Done!" />
 </form>

@@ -13,7 +13,7 @@ import requests
 
 # Create your views here.
 from .forms import CreateUserForm, profileForm
-from .models import AstroPost, News as NewsModel, userSetting
+from .models import Video, AstroPost, News as NewsModel, userSetting
 
 @login_required(login_url='signin')
 def index(request):
@@ -49,7 +49,7 @@ def singin(request):
 def signoutUser(request):
     logout(request)
     messages.success(request, 'Come back soon!')
-    return render(request,'signout.html')
+    return render(request,'accounts/signout.html')
 
 def signup(request):
     if request.user.is_authenticated:
@@ -153,5 +153,8 @@ def accountSettings(request):
     return render(request, "accounts/profile.html", context)
 
 def community(request):
-    context = {}
+    video = Video.objects.all()
+    context = {
+        'videos':video
+    }
     return render(request, "community.html", context)
